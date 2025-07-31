@@ -1,9 +1,9 @@
-**As a** [user]  
+**As a** [role]  
 **I need** [function]  
 **So that** [benefit]  
       
 ### Details and Assumptions
-* [There is a big issue]      
+* [document what you know]      
 
 ### Acceptance Criteria     
 **Gherkin Format**  
