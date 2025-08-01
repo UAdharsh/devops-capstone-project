@@ -3,7 +3,7 @@ name: User Story
 about: 'This is a user story template '
 title: User Story
 labels: ''
-assignees: ''
+assignees: UAdharsh
 
 ---
 
