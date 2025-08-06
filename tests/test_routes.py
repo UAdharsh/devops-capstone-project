@@ -161,3 +161,37 @@ class TestAccountService(TestCase):
         
         data = resp.get_json()
         self.assertEqual(len(data), 5)
+    
+    def test_update_account(self):
+        """It should Update an existing Account"""
+            # Create a test account
+        account = self._create_accounts(1)[0]
+    
+        # Modify account data
+        account.name = "Updated Name"
+    
+        # Make PUT request to update account
+        resp = self.client.put(
+            f"{BASE_URL}/{account.id}",
+            json=account.serialize(),
+            content_type="application/json",
+        )
+    
+        # Assert successful response
+        self.assertEqual(resp.status_code, status.HTTP_200_OK)
+    
+        # Verify updated data
+        updated_account = resp.get_json()
+        self.assertEqual(updated_account["name"], "Updated Name")
+
+    def test_update_account_not_found(self):
+        """It should not Update an Account that is not found"""
+        account = self._create_accounts(1)[0]
+        resp = self.client.put(
+            f"{BASE_URL}/0",
+            json=account.serialize(),
+            content_type="application/json",
+        )
+        self.assertEqual(resp.status_code, status.HTTP_404_NOT_FOUND)
+
+        
