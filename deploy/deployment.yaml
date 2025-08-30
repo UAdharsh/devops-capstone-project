@@ -18,10 +18,10 @@ spec:
         app: accounts
     spec:
       containers:
-      - image: us.icr.io/sn-labs-adharshajay2/accounts:1
+      - image: IMAGE_NAME_HERE #us.icr.io/sn-labs-adharshajay2/accounts:1
         name: accounts
         resources: {}
-        '''env:
+        env:
           - name: DATABASE_HOST
             value: postgresql
           - name: DATABASE_NAME
@@ -38,23 +38,5 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: postgresql
-                key: database-user'''
+                key: database-user
 status: {}
-env:
-  - name: DATABASE_HOST
-    value: postgresql
-  - name: DATABASE_NAME
-    valueFrom:
-      secretKeyRef:
-        name: postgresql
-        key: database-name
-  - name: DATABASE_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: postgresql
-        key: database-password
-  - name: DATABASE_USER
-    valueFrom:
-      secretKeyRef:
-        name: postgresql
-        key: database-user
